@@ -1,0 +1,128 @@
+/* =========================================================
+   Halaman Karir (/karir/ dan /karir/<lowongan>.html)
+   Dimuat setelah style.css; memakai token warna & font yang sama.
+   ========================================================= */
+
+/* Halaman karir tidak memakai aturan "satu section = satu layar" dari style.css */
+.page-karir main > section { min-height: 0; display: block; padding-block: clamp(36px, 6vh, 64px); }
+
+/* Menu aktif di navbar */
+.nav a[aria-current="page"] { color: var(--sky-text); }
+
+/* ---------- Header halaman (band navy) ---------- */
+.page-hero {
+  position: relative; isolation: isolate; overflow: hidden; color: #ffffff;
+  background:
+    linear-gradient(115deg, transparent 70%, rgba(2, 149, 215, .5) 70%, rgba(2, 149, 215, .5) 70.3%, transparent 70.3%),
+    radial-gradient(55% 90% at 100% 0%, rgba(2, 149, 215, .38), transparent 70%),
+    linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+}
+.page-hero::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background-image: radial-gradient(rgba(255, 255, 255, .2) 1px, transparent 1.6px);
+  background-size: 22px 22px;
+  -webkit-mask-image: linear-gradient(to right, transparent 30%, #000);
+          mask-image: linear-gradient(to right, transparent 30%, #000);
+}
+.page-hero .wrap { display: grid; gap: 14px; }
+.page-hero .eyebrow { color: var(--sky-soft); }
+.page-hero h1 { font-size: clamp(30px, 4vw, 46px); font-weight: 800; letter-spacing: -.01em; }
+.page-hero p { color: #c9d3e6; max-width: 62ch; }
+
+.breadcrumb { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 14px; color: #c9d3e6; }
+.breadcrumb a { color: #ffffff; text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb [aria-hidden="true"] { opacity: .5; }
+
+/* ---------- Chip info (lokasi, tipe, mode) ---------- */
+.chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.chips li {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 12px; border-radius: 999px;
+  background: var(--ground); border: 1px solid var(--line);
+  font-size: 13.5px; line-height: 1.4; color: var(--ink);
+}
+.chips svg { width: 15px; height: 15px; flex: none; color: var(--sky-text); }
+.chips--light li { background: rgba(255, 255, 255, .08); border-color: rgba(255, 255, 255, .22); color: #e6ecf6; }
+.chips--light svg { color: var(--sky-soft); }
+
+/* ---------- Daftar lowongan ---------- */
+.jobs__head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+.jobs__head h2 { font-size: clamp(22px, 2.4vw, 30px); color: var(--navy); }
+.jobs__count { font-family: var(--font-data); font-size: 13px; color: var(--muted); }
+
+.job-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.job-card {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px 28px; align-items: center;
+  padding: 22px 26px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+  color: inherit; text-decoration: none;
+  transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+.job-card:hover { border-color: var(--sky); box-shadow: 0 12px 28px rgba(14, 57, 102, .10); transform: translateY(-2px); }
+.job-card__main { display: grid; gap: 6px; min-width: 0; }
+.job-card__dept { font-family: var(--font-data); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--sky-text); }
+.job-card h3 { font-size: 20px; color: var(--navy); }
+.job-card p { color: var(--muted); font-size: 15px; }
+.job-card .chips { margin-top: 6px; }
+.job-card__side { display: grid; justify-items: end; gap: 10px; text-align: right; }
+.job-card__deadline { font-size: 13px; color: var(--muted); }
+.job-card__cta { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; color: var(--navy); }
+.job-card__cta svg { width: 18px; height: 18px; transition: transform .2s ease; }
+.job-card:hover .job-card__cta svg { transform: translateX(3px); }
+
+.jobs-empty {
+  display: grid; justify-items: center; gap: 8px; text-align: center;
+  padding: 44px 28px; background: var(--surface);
+  border: 1.5px dashed #b7c3d0; border-radius: 14px;
+}
+.jobs-empty h3 { font-size: 20px; color: var(--navy); }
+.jobs-empty p { color: var(--muted); max-width: 52ch; }
+
+/* ---------- Detail lowongan ---------- */
+.job-detail__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 340px); gap: 40px; align-items: start; }
+
+.job-body {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+  padding: clamp(22px, 3vw, 38px); display: grid; gap: 10px;
+}
+.job-body h2 { font-size: 20px; color: var(--navy); margin-top: 22px; }
+.job-body h2:first-child { margin-top: 0; }
+.job-body p { color: var(--ink); }
+.job-body ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.job-body li { position: relative; padding-left: 22px; }
+.job-body li::before { content: ""; position: absolute; left: 4px; top: .68em; width: 7px; height: 7px; border-radius: 50%; background: var(--sky); }
+
+.job-aside { position: sticky; top: calc(var(--header-h) + 20px); display: grid; gap: 14px; }
+.apply-card {
+  position: relative; overflow: hidden;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+  box-shadow: 0 14px 32px rgba(14, 57, 102, .08);
+  padding: 28px 24px 24px; display: grid; gap: 18px;
+}
+.apply-card::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 5px; background: linear-gradient(90deg, var(--navy), var(--sky)); }
+.apply-card dl { margin: 0; display: grid; gap: 12px; }
+.apply-card dl div { display: grid; gap: 2px; }
+.apply-card dt { font-family: var(--font-data); font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.apply-card dd { margin: 0; font-weight: 600; color: var(--ink); }
+.btn--block { width: 100%; min-height: 52px; }
+.btn--block svg { width: 18px; height: 18px; }
+.apply-card__note { font-size: 13px; color: var(--muted); }
+
+.back-link { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: var(--navy); text-decoration: none; }
+.back-link:hover { text-decoration: underline; }
+.back-link svg { width: 18px; height: 18px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1000px) {
+  .job-detail__grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .job-aside { position: static; order: -1; }   /* ringkasan & tombol lamar tampil lebih dulu di HP */
+}
+@media (max-width: 760px) {
+  .job-card { grid-template-columns: minmax(0, 1fr); padding: 18px; }
+  .job-card__side { justify-items: start; text-align: left; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .job-card, .job-card__cta svg { transition: none; }
+  .job-card:hover { transform: none; }
+}

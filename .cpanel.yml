@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/digikars/public_html/
+    - /bin/rm -rf ${DEPLOYPATH}karir
+    - /bin/cp -R * $DEPLOYPATH
